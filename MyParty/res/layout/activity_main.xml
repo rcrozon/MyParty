@@ -1,0 +1,53 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" 
+    android:layout_marginTop="@dimen/topSpacement"
+    android:layout_marginLeft="20dip"
+    android:layout_marginRight="20dip"
+    tools:context=".MainActivity" >
+
+    <TextView
+        android:id="@+id/loginTextView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/login"
+        android:textSize="@dimen/itemDimension" />
+
+    <EditText
+        android:id="@+id/loginTextEdit"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint=""
+        android:textSize="@dimen/itemDimension" />
+    
+    <TextView
+        android:id="@+id/pwdTextView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="20dip"
+        android:text="@string/password"
+        android:textSize="@dimen/itemDimension" />
+
+    <EditText
+        android:id="@+id/pwdTextEdit"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint=""
+        android:textSize="@dimen/itemDimension"/>
+    
+    <Button
+        android:id="@+id/buttonConnexion"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blue"
+        android:layout_marginTop="20dip"
+        android:layout_gravity="center_vertical"
+        android:text="@string/connexion" /> 
+
+</LinearLayout>
