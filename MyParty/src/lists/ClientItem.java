@@ -16,7 +16,7 @@ public class ClientItem extends LinearLayout implements Items{
 		TextView firstName = new TextView(context);
 		firstName.setText(client.getFirstName());
 		TextView lastName = new TextView(context);
-		firstName.setText(client.getLastName());
+		lastName.setText(client.getLastName());
 		TextView birth = new TextView(context);
 //		birth.setText(client.getBirth());
 		TextView email = new TextView(context);
@@ -24,7 +24,7 @@ public class ClientItem extends LinearLayout implements Items{
 		TextView login = new TextView(context);
 		login.setText(client.getLogin());
 		TextView pwd = new TextView(context);
-		login.setText(client.getPassword());
+		pwd.setText(client.getPassword());
 		this.addView(firstName);
 		this.addView(lastName);
 		this.addView(birth);

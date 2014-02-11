@@ -34,7 +34,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		Button b = (Button)v;
 		if (v == buttonConnexion){
-			Intent intent = new Intent(this, ConcertActivity.class);
+			Intent intent = new Intent(this, ClientListActivity.class);//ConcertActivity.class
 	    	this.startActivity(intent);
 		}else {
 			Intent intent = new Intent(this, RegisterActivity.class);

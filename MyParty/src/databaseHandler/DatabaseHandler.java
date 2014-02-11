@@ -24,17 +24,17 @@ public class DatabaseHandler {
 	
 	
 	public DatabaseHandler(Context context){
-		//On créer la BDD et sa table
+		//On crï¿½er la BDD et sa table
 		SQLiteBase = new DatabaseCreate(context, BDD_NAME, null, VERSION_BDD);
 	}
  
 	public void open(){
-		//on ouvre la BDD en écriture
+		//on ouvre la BDD en ï¿½criture
 		bdd = SQLiteBase.getWritableDatabase();
 	}
  
 	public void close(){
-		//on ferme l'accès à la BDD
+		//on ferme l'accï¿½s ï¿½ la BDD
 		bdd.close();
 	}
  
@@ -43,18 +43,18 @@ public class DatabaseHandler {
 	}
 
 	public long insertClient(Client client){
-		//Création d'un ContentValues (fonctionne comme une HashMap)
+		//Crï¿½ation d'un ContentValues (fonctionne comme une HashMap)
 		ContentValues values = new ContentValues();
-		//on lui ajoute une valeur associé à une clé (qui est le nom de la colonne dans laquelle on veut mettre la valeur)
+		//on lui ajoute une valeur associï¿½ ï¿½ une clï¿½ (qui est le nom de la colonne dans laquelle on veut mettre la valeur)
 		values.put(COL_FIRSTNAME, client.getFirstName());
 		values.put(COL_LASTNAME, client.getLastName());
-		//on insère l'objet dans la BDD via le ContentValues
+		//on insï¿½re l'objet dans la BDD via le ContentValues
 		return bdd.insert(CLIENT_TABLE, null, values);
 	}
  
 //	public int updateLivre(int id, Livre livre){
-//		//La mise à jour d'un livre dans la BDD fonctionne plus ou moins comme une insertion
-//		//il faut simple préciser quelle livre on doit mettre à jour grâce à l'ID
+//		//La mise ï¿½ jour d'un livre dans la BDD fonctionne plus ou moins comme une insertion
+//		//il faut simple prï¿½ciser quelle livre on doit mettre ï¿½ jour grï¿½ce ï¿½ l'ID
 //		ContentValues values = new ContentValues();
 //		values.put(COL_FIRSTNAME, livre.getIsbn());
 //		values.put(COL_TITRE, livre.getTitre());
@@ -62,13 +62,13 @@ public class DatabaseHandler {
 //	}
  
 //	public int removeLivreWithID(int id){
-//		//Suppression d'un livre de la BDD grâce à l'ID
+//		//Suppression d'un livre de la BDD grï¿½ce ï¿½ l'ID
 //		return bdd.delete(CLIENT_TABLE, COL_ID + " = " +id, null);
 //	}
  
-	public Client getLivreWithTitre(String titre){
-		//Récupère dans un Cursor les valeur correspondant à un livre contenu dans la BDD (ici on sélectionne le livre grâce à son titre)
-		Cursor c = bdd.query(CLIENT_TABLE, new String[] {COL_ID, COL_FIRSTNAME, COL_LASTNAME}, COL_TITRE + " LIKE \"" + titre +"\"", null, null, null, null);
-		return cursorToLivre(c);
-	}
+	//public Client getLivreWithTitre(String titre){
+		//Rï¿½cupï¿½re dans un Cursor les valeur correspondant ï¿½ un livre contenu dans la BDD (ici on sï¿½lectionne le livre grï¿½ce ï¿½ son titre)
+		//Cursor c = bdd.query(CLIENT_TABLE, new String[] {COL_ID, COL_FIRSTNAME, COL_LASTNAME}, COL_TITRE + " LIKE \"" + titre +"\"", null, null, null, null);
+		//return cursorToLivre(c);
+	//}
 }

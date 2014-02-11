@@ -13,7 +13,9 @@
     <string name="birth">Birth</string>
     <string name="email">Email</string>
     <string name="address">Address</string>
-    
+
     <color name="blue">#1E7FCB</color>
+
+    <string name="title_activity_client_list">ClientListActivity</string>
 
 </resources>
