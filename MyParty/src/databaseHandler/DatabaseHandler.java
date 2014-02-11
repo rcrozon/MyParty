@@ -1,9 +1,13 @@
 package databaseHandler;
 
+import java.util.Date;
+
 import concert.Client;
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 public class DatabaseHandler {
 	
@@ -31,6 +35,15 @@ public class DatabaseHandler {
 	public void open(){
 		//on ouvre la BDD en écriture
 		bdd = SQLiteBase.getWritableDatabase();
+		Client c1 = new Client("romain", "CROZON", new Date(), "crozonr@gmail.com", "rcrozon", "oee120");
+		Client c2 = new Client("simon", "SAVIN", new Date(), "simsav1@gmail.com", "simsav1", "oee121");
+		Client c3 = new Client("julie", "DUFOUR", new Date(), "julie@gmail.com", "julie", "oee122");
+		insertClient(c1);
+		insertClient(c2);
+		insertClient(c3);
+		Log.i("CLIENT 1", "Client 1 : " + getClientWithNames("romain", "CROZON").toString());
+		Log.i("CLIENT 2", "Client 2 : " + getClientWithNames("simon", "SAVIN").toString());
+		Log.i("CLIENT 3", "Client 3 : " + getClientWithNames("julie", "DUFOUR").toString());
 	}
  
 	public void close(){
@@ -66,9 +79,29 @@ public class DatabaseHandler {
 //		return bdd.delete(CLIENT_TABLE, COL_ID + " = " +id, null);
 //	}
  
-	public Client getLivreWithTitre(String titre){
+	public Client getClientWithNames(String firstName, String lastName){ 
 		//Récupère dans un Cursor les valeur correspondant à un livre contenu dans la BDD (ici on sélectionne le livre grâce à son titre)
-		Cursor c = bdd.query(CLIENT_TABLE, new String[] {COL_ID, COL_FIRSTNAME, COL_LASTNAME}, COL_TITRE + " LIKE \"" + titre +"\"", null, null, null, null);
-		return cursorToLivre(c);
+		Cursor c = bdd.query(CLIENT_TABLE, new String[] {COL_ID, COL_FIRSTNAME, COL_LASTNAME}, COL_LASTNAME + " LIKE \"" + lastName +"\"", null, null, null, null);
+		return cursorToClient(c);
+	}
+	
+	private Client cursorToClient(Cursor c){
+		//si aucun élément n'a été retourné dans la requête, on renvoie null
+		if (c.getCount() == 0){
+			Log.i("ERRORO PAS COOL", "Client null");
+			return null;
+		}
+		
+		//Sinon on se place sur le premier élément
+		c.moveToFirst();
+		//On créé un livre
+		Client client = new Client(c.getString(NUM_COL_FIRSTNAME), c.getString(NUM_COL_LASTNAME), new Date(), "", "rcrozon", "oee120");
+		//on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
+		
+		//On ferme le cursor
+		c.close();
+ 
+		//On retourne le livre
+		return client;
 	}
 }

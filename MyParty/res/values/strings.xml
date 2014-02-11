@@ -13,7 +13,14 @@
     <string name="birth">Birth</string>
     <string name="email">Email</string>
     <string name="address">Address</string>
+    <string name="concerts">Concerts</string>
+    <string name="scan">Scan</string>
+    <string name="stats">Stats</string>
     
     <color name="blue">#1E7FCB</color>
+    <color name="trueblue">#0000FF</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="selected_color">#0098CB</color> <!-- blue  -->
 
 </resources>

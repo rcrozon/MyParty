@@ -1,27 +1,31 @@
 package com.example.myparty;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MotionEvent;
-import android.widget.ImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ViewFlipper;
 
-public class ConcertActivity extends Activity {
+public class ConcertActivity extends Activity implements OnClickListener{
 
-    private float 			lastX;
-    private ViewFlipper 	viewFlipper;
-    
+	Button buttonConcerts ;
+	Button buttonScan ;
+	Button buttonStats ;
+	ViewFlipper view_flipper ;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_concerts);
-		viewFlipper = (ViewFlipper)findViewById(R.id.view_flipper);
-		int gallery_grid_Images[]={R.drawable.party1,R.drawable.party2,R.drawable.party4,R.drawable.party2,R.drawable.party4};
-		for(int i=0;i<gallery_grid_Images.length;i++){
-            setFlipperImage(gallery_grid_Images[i]);
-        }
+		buttonConcerts = (Button)findViewById(R.id.buttonConcerts);
+		buttonScan = (Button)findViewById(R.id.buttonScan);
+		buttonStats = (Button)findViewById(R.id.buttonStats);
+		view_flipper = (ViewFlipper)findViewById(R.id.view_flipper);
+		buttonConcerts.setOnClickListener(this);
+		buttonScan.setOnClickListener(this);
+		buttonStats.setOnClickListener(this);
 	}
 	
 	@Override
@@ -29,38 +33,36 @@ public class ConcertActivity extends Activity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
-	
-	private void setFlipperImage(int res) {
-	    ImageView image = new ImageView(getApplicationContext());
-	    image.setBackgroundResource(res);
-	    viewFlipper.addView(image);
+
+	@Override
+	public void onClick(View v) {
+		Button b = (Button)v;
+		int index = view_flipper.getDisplayedChild();
+		int nextIndex ;
+		buttonConcerts.setBackgroundResource(R.drawable.button_unselected);
+		buttonScan.setBackgroundResource(R.drawable.button_unselected);
+		buttonStats.setBackgroundResource(R.drawable.button_unselected);
+		if (b == buttonConcerts){
+			nextIndex = 0;
+			buttonConcerts.setBackgroundResource(R.drawable.button_selected);
+		}else if (b == buttonScan){
+			nextIndex = 1;
+			buttonScan.setBackgroundResource(R.drawable.button_selected);
+		}else{
+			nextIndex = 2;
+			buttonStats.setBackgroundResource(R.drawable.button_selected);
+		}
+		if (nextIndex != index){
+			if (nextIndex > index){
+				view_flipper.setInAnimation(this, R.anim.in_from_right);
+				view_flipper.setOutAnimation(this, R.anim.out_to_left);
+			}else{
+				view_flipper.setInAnimation(this, R.anim.in_from_left);
+				view_flipper.setOutAnimation(this, R.anim.out_to_right);
+			}
+			view_flipper.setDisplayedChild(nextIndex);	
+		}
+		
 	}
 	
-	public boolean onTouchEvent(MotionEvent touchevent){
-    	switch (touchevent.getAction()) {
-             case MotionEvent.ACTION_DOWN:  {
-                 lastX = touchevent.getX();
-                 break;
-             }
-             case MotionEvent.ACTION_UP:  {
-                 float currentX = touchevent.getX();
-                 if (lastX < currentX)  {
-                	 if (viewFlipper.getDisplayedChild() == 0)
-                         break;
-                  		 viewFlipper.setInAnimation(this, R.anim.in_from_left);
-                         viewFlipper.setOutAnimation(this, R.anim.out_to_right);
-                         viewFlipper.showNext();
-                 }
-                 if (lastX > currentX) {
-                     if (viewFlipper.getDisplayedChild() == 1)
-                         break;
-                     viewFlipper.setInAnimation(this, R.anim.in_from_right);
-                     viewFlipper.setOutAnimation(this, R.anim.out_to_left);
-                     viewFlipper.showPrevious();
-                 }
-                 break;
-             }
-    	}
-    	return false;
-    }
 }

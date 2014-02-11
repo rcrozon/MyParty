@@ -26,4 +26,9 @@ public class Client {
 	public String getEmail(){return email;}
 	public String getLogin(){return login;}
 	public String getPassword(){return password;}
+	
+	@Override
+	public String toString(){
+		return "Client : " + firstName + " " + lastName;
+	}
 }
