@@ -1,20 +1,22 @@
 package databaseHandler;
 
+import concert.Client;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 public class DatabaseHandler {
 	
 	private static final int VERSION_BDD = 1;
-	private static final String NOM_BDD = "eleves.db";
+	private static final String BDD_NAME = "myparty.db";
  
-	private static final String TABLE_LIVRES = "table_livres";
+	private static final String CLIENT_TABLE = "table_livres";
 	private static final String COL_ID = "ID";
 	private static final int NUM_COL_ID = 0;
-	private static final String COL_ISBN = "ISBN";
-	private static final int NUM_COL_ISBN = 1;
-	private static final String COL_TITRE = "Titre";
-	private static final int NUM_COL_TITRE = 2;
+	private static final String COL_FIRSTNAME = "firstname";
+	private static final int NUM_COL_FIRSTNAME = 1;
+	private static final String COL_LASTNAME = "lastname";
+	private static final int NUM_COL_LASTNAME = 2;
  
 	private SQLiteDatabase bdd;
   
@@ -23,7 +25,7 @@ public class DatabaseHandler {
 	
 	public DatabaseHandler(Context context){
 		//On créer la BDD et sa table
-		SQLiteBase = new DatabaseCreate(context, NOM_BDD, null, VERSION_BDD);
+		SQLiteBase = new DatabaseCreate(context, BDD_NAME, null, VERSION_BDD);
 	}
  
 	public void open(){
@@ -39,34 +41,34 @@ public class DatabaseHandler {
 	public SQLiteDatabase getBDD(){
 		return bdd;
 	}
- 
-	public long insertLivre(Livre livre){
+
+	public long insertClient(Client client){
 		//Création d'un ContentValues (fonctionne comme une HashMap)
 		ContentValues values = new ContentValues();
 		//on lui ajoute une valeur associé à une clé (qui est le nom de la colonne dans laquelle on veut mettre la valeur)
-		values.put(COL_ISBN, livre.getIsbn());
-		values.put(COL_TITRE, livre.getTitre());
+		values.put(COL_FIRSTNAME, client.getFirstName());
+		values.put(COL_LASTNAME, client.getLastName());
 		//on insère l'objet dans la BDD via le ContentValues
-		return bdd.insert(TABLE_LIVRES, null, values);
+		return bdd.insert(CLIENT_TABLE, null, values);
 	}
  
-	public int updateLivre(int id, Livre livre){
-		//La mise à jour d'un livre dans la BDD fonctionne plus ou moins comme une insertion
-		//il faut simple préciser quelle livre on doit mettre à jour grâce à l'ID
-		ContentValues values = new ContentValues();
-		values.put(COL_ISBN, livre.getIsbn());
-		values.put(COL_TITRE, livre.getTitre());
-		return bdd.update(TABLE_LIVRES, values, COL_ID + " = " +id, null);
-	}
+//	public int updateLivre(int id, Livre livre){
+//		//La mise à jour d'un livre dans la BDD fonctionne plus ou moins comme une insertion
+//		//il faut simple préciser quelle livre on doit mettre à jour grâce à l'ID
+//		ContentValues values = new ContentValues();
+//		values.put(COL_FIRSTNAME, livre.getIsbn());
+//		values.put(COL_TITRE, livre.getTitre());
+//		return bdd.update(CLIENT_TABLE, values, COL_ID + " = " +id, null);
+//	}
  
-	public int removeLivreWithID(int id){
-		//Suppression d'un livre de la BDD grâce à l'ID
-		return bdd.delete(TABLE_LIVRES, COL_ID + " = " +id, null);
-	}
+//	public int removeLivreWithID(int id){
+//		//Suppression d'un livre de la BDD grâce à l'ID
+//		return bdd.delete(CLIENT_TABLE, COL_ID + " = " +id, null);
+//	}
  
-	public Livre getLivreWithTitre(String titre){
+	public Client getLivreWithTitre(String titre){
 		//Récupère dans un Cursor les valeur correspondant à un livre contenu dans la BDD (ici on sélectionne le livre grâce à son titre)
-		Cursor c = bdd.query(TABLE_LIVRES, new String[] {COL_ID, COL_ISBN, COL_TITRE}, COL_TITRE + " LIKE \"" + titre +"\"", null, null, null, null);
+		Cursor c = bdd.query(CLIENT_TABLE, new String[] {COL_ID, COL_FIRSTNAME, COL_LASTNAME}, COL_TITRE + " LIKE \"" + titre +"\"", null, null, null, null);
 		return cursorToLivre(c);
 	}
 }
