@@ -11,12 +11,15 @@ import android.view.View.OnClickListener;
 public class MainActivity extends Activity implements OnClickListener {
 
 	Button buttonConnexion ;
+	Button buttonRegister ;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		buttonConnexion = (Button)findViewById(R.id.buttonConnexion);
+		buttonRegister = (Button)findViewById(R.id.buttonRegister);
 		buttonConnexion.setOnClickListener(this);
+		buttonRegister.setOnClickListener(this);
 	}
 	
 	@Override
@@ -29,7 +32,13 @@ public class MainActivity extends Activity implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		Intent intent = new Intent(this, ConcertActivity.class);
-    	this.startActivity(intent);
+		Button b = (Button)v;
+		if (v == buttonConnexion){
+			Intent intent = new Intent(this, ConcertActivity.class);
+	    	this.startActivity(intent);
+		}else {
+			Intent intent = new Intent(this, RegisterActivity.class);
+	    	this.startActivity(intent);
+		}
 	}
 }
