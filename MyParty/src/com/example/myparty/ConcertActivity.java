@@ -1,11 +1,17 @@
 package com.example.myparty;
 
+import java.util.Date;
+
+import concert.Concert;
+import lists.ConcertItem;
+import lists.ConcertList;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ViewFlipper;
 
 public class ConcertActivity extends Activity implements OnClickListener{
@@ -23,6 +29,7 @@ public class ConcertActivity extends Activity implements OnClickListener{
 		buttonScan = (Button)findViewById(R.id.buttonScan);
 		buttonStats = (Button)findViewById(R.id.buttonStats);
 		view_flipper = (ViewFlipper)findViewById(R.id.view_flipper);
+		this.view_flipper.addView(new ConcertList(this));
 		buttonConcerts.setOnClickListener(this);
 		buttonScan.setOnClickListener(this);
 		buttonStats.setOnClickListener(this);
