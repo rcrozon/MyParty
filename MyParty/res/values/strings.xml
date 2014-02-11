@@ -16,6 +16,7 @@
     <string name="concerts">Concerts</string>
     <string name="scan">Scan</string>
     <string name="stats">Stats</string>
+    <string name="menu_refresh">Refresh</string>
     
     <color name="blue">#1E7FCB</color>
     <color name="trueblue">#0000FF</color>

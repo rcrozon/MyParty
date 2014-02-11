@@ -62,7 +62,6 @@ public class ConcertActivity extends Activity implements OnClickListener{
 			}
 			view_flipper.setDisplayedChild(nextIndex);	
 		}
-		
 	}
 	
 }
