@@ -21,6 +21,16 @@
 		        android:text="@string/concerts" />
             
             <Button
+		        android:id="@+id/buttonClient"
+		        style="@style/AppBaseTheme"
+		        android:layout_width="wrap_content"
+		        android:layout_weight="1"
+		        android:textColor="@color/white"
+		        android:layout_height="wrap_content"
+		        android:background="@drawable/button_unselected"
+		        android:text="@string/client" />
+            
+            <Button
 		        android:id="@+id/buttonScan"
 		        style="@style/AppBaseTheme"
 		        android:layout_width="wrap_content"

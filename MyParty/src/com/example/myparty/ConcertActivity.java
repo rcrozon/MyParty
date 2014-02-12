@@ -3,6 +3,7 @@ package com.example.myparty;
 import java.util.Date;
 
 import concert.Concert;
+import lists.ClientList;
 import lists.ConcertItem;
 import lists.ConcertList;
 import android.app.Activity;
@@ -17,6 +18,7 @@ import android.widget.ViewFlipper;
 public class ConcertActivity extends Activity implements OnClickListener{
 
 	Button buttonConcerts ;
+	Button buttonClient ;
 	Button buttonScan ;
 	Button buttonStats ;
 	ViewFlipper view_flipper ;
@@ -26,12 +28,14 @@ public class ConcertActivity extends Activity implements OnClickListener{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_concerts);
 		buttonConcerts = (Button)findViewById(R.id.buttonConcerts);
+		buttonClient = (Button)findViewById(R.id.buttonClient);
 		buttonScan = (Button)findViewById(R.id.buttonScan);
 		buttonStats = (Button)findViewById(R.id.buttonStats);
 		view_flipper = (ViewFlipper)findViewById(R.id.view_flipper);
 		this.view_flipper.addView(new ConcertList(this));
-		buttonConcerts.setOnClickListener(this);
+		this.view_flipper.addView(new ClientList(this));
 		buttonScan.setOnClickListener(this);
+		buttonClient.setOnClickListener(this);
 		buttonStats.setOnClickListener(this);
 	}
 	
@@ -47,16 +51,20 @@ public class ConcertActivity extends Activity implements OnClickListener{
 		int index = view_flipper.getDisplayedChild();
 		int nextIndex ;
 		buttonConcerts.setBackgroundResource(R.drawable.button_unselected);
+		buttonClient.setBackgroundResource(R.drawable.button_unselected);
 		buttonScan.setBackgroundResource(R.drawable.button_unselected);
 		buttonStats.setBackgroundResource(R.drawable.button_unselected);
 		if (b == buttonConcerts){
 			nextIndex = 0;
 			buttonConcerts.setBackgroundResource(R.drawable.button_selected);
-		}else if (b == buttonScan){
+		}else if (b == buttonClient){
 			nextIndex = 1;
+			buttonClient.setBackgroundResource(R.drawable.button_selected);
+		}else if (b == buttonScan){
+			nextIndex = 2;
 			buttonScan.setBackgroundResource(R.drawable.button_selected);
 		}else{
-			nextIndex = 2;
+			nextIndex = 3;
 			buttonStats.setBackgroundResource(R.drawable.button_selected);
 		}
 		if (nextIndex != index){

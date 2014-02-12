@@ -36,7 +36,9 @@ public class Adapter extends BaseAdapter
 	@Override
 	public View getView(int position, View view, ViewGroup viewGroup)
 	{
-		view = (ConcertItem)listItems.get(position);
-		return view;
+		if (listItems.get(position) instanceof ConcertItem)
+			return (ConcertItem)listItems.get(position);
+		else
+			return (ClientItem)listItems.get(position);
 	}
 }
