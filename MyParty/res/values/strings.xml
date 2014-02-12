@@ -16,6 +16,10 @@
     <string name="concerts">Concerts</string>
     <string name="scan">Scan</string>
     <string name="client">Clients</string>
+    <string name="all_concerts">All</string>
+    <string name="next_concerts">Next</string>
+    <string name="news">News</string>
+    
     <string name="stats">Stats</string>
     <string name="menu_refresh">Refresh</string>
     

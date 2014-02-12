@@ -11,7 +11,7 @@
             android:layout_height="wrap_content" >
             
             <Button
-		        android:id="@+id/buttonAllConcerts"
+		        android:id="@+id/buttonDetails"
 		        style="@style/AppBaseTheme"
 		        android:layout_weight="1"
 		        android:textColor="@color/white"
@@ -21,7 +21,7 @@
 		        android:text="@string/all_concerts" />
             
             <Button
-		        android:id="@+id/buttonNextConcerts"
+		        android:id="@+id/buttonClient"
 		        style="@style/AppBaseTheme"
 		        android:layout_width="wrap_content"
 		        android:layout_weight="1"
@@ -31,7 +31,17 @@
 		        android:text="@string/next_concerts" />
             
             <Button
-		        android:id="@+id/buttonNews"
+		        android:id="@+id/buttonScan"
+		        style="@style/AppBaseTheme"
+		        android:layout_width="wrap_content"
+		        android:layout_weight="1"
+		        android:textColor="@color/white"
+		        android:layout_height="wrap_content"
+		        android:background="@drawable/button_unselected"
+		        android:text="@string/news" />
+            
+            <Button
+		        android:id="@+id/buttonStats"
 		        style="@style/AppBaseTheme"
 		        android:layout_width="wrap_content"
 		        android:layout_weight="1"

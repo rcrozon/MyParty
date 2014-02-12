@@ -26,11 +26,15 @@
         </activity>
         <activity
             android:name="com.example.myparty.ConcertActivity"
-            android:label="ConcertActivity" >
+            android:label="Concerts" >
         </activity>
         <activity
             android:name="com.example.myparty.RegisterActivity"
-            android:label="RegisterActivity" >
+            android:label="Sign in" >
+        </activity>
+        <activity
+            android:name="com.example.myparty.ConcertDetailsActivity"
+            android:label="Concert Details" >
         </activity>
     </application>
 

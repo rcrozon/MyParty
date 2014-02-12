@@ -8,6 +8,7 @@ import lists.ConcertItem;
 import lists.ConcertList;
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,26 +18,25 @@ import android.widget.ViewFlipper;
 
 public class ConcertActivity extends Activity implements OnClickListener{
 
-	Button buttonConcerts ;
-	Button buttonClient ;
-	Button buttonScan ;
-	Button buttonStats ;
+	Button buttonAllConcerts ;
+	Button buttonNextConcerts ;
+	Button buttonNews ;
 	ViewFlipper view_flipper ;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_concerts);
-		buttonConcerts = (Button)findViewById(R.id.buttonConcerts);
-		buttonClient = (Button)findViewById(R.id.buttonClient);
-		buttonScan = (Button)findViewById(R.id.buttonScan);
-		buttonStats = (Button)findViewById(R.id.buttonStats);
+		buttonAllConcerts = (Button)findViewById(R.id.buttonAllConcerts);
+		buttonNews = (Button)findViewById(R.id.buttonNews);
+		buttonNextConcerts = (Button)findViewById(R.id.buttonNextConcerts);
 		view_flipper = (ViewFlipper)findViewById(R.id.view_flipper);
 		this.view_flipper.addView(new ConcertList(this));
-		this.view_flipper.addView(new ClientList(this));
-		buttonScan.setOnClickListener(this);
-		buttonClient.setOnClickListener(this);
-		buttonStats.setOnClickListener(this);
+		this.view_flipper.addView(new ConcertList(this));
+		this.view_flipper.addView(new ConcertList(this));
+		buttonAllConcerts.setOnClickListener(this);
+		buttonNews.setOnClickListener(this);
+		buttonNextConcerts.setOnClickListener(this);
 	}
 	
 	@Override
@@ -50,22 +50,18 @@ public class ConcertActivity extends Activity implements OnClickListener{
 		Button b = (Button)v;
 		int index = view_flipper.getDisplayedChild();
 		int nextIndex ;
-		buttonConcerts.setBackgroundResource(R.drawable.button_unselected);
-		buttonClient.setBackgroundResource(R.drawable.button_unselected);
-		buttonScan.setBackgroundResource(R.drawable.button_unselected);
-		buttonStats.setBackgroundResource(R.drawable.button_unselected);
-		if (b == buttonConcerts){
+		buttonAllConcerts.setBackgroundResource(R.drawable.button_unselected);
+		buttonNews.setBackgroundResource(R.drawable.button_unselected);
+		buttonNextConcerts.setBackgroundResource(R.drawable.button_unselected);
+		if (b == buttonAllConcerts){
 			nextIndex = 0;
-			buttonConcerts.setBackgroundResource(R.drawable.button_selected);
-		}else if (b == buttonClient){
-			nextIndex = 1;
-			buttonClient.setBackgroundResource(R.drawable.button_selected);
-		}else if (b == buttonScan){
+			buttonAllConcerts.setBackgroundResource(R.drawable.button_selected);
+		}else if (b == buttonNextConcerts){
+			nextIndex = 1; 
+			buttonNextConcerts.setBackgroundResource(R.drawable.button_selected);
+		}else{ 
 			nextIndex = 2;
-			buttonScan.setBackgroundResource(R.drawable.button_selected);
-		}else{
-			nextIndex = 3;
-			buttonStats.setBackgroundResource(R.drawable.button_selected);
+			buttonNews.setBackgroundResource(R.drawable.button_selected);
 		}
 		if (nextIndex != index){
 			if (nextIndex > index){

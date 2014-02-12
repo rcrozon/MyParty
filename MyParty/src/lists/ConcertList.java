@@ -4,10 +4,13 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.example.myparty.ConcertActivity;
+import com.example.myparty.ConcertDetailsActivity;
 import com.example.myparty.R;
 
 import concert.Concert;
@@ -17,7 +20,7 @@ public class ConcertList extends ListView {
     private Adapter mAdapter;
     private ArrayList<Items> items = new ArrayList<Items>();
 	
-	public ConcertList(Context context) {
+	public ConcertList(final Context context) {
 		super(context);
 		Concert c1 = new Concert("", "Bee Gees", new Date(), new Date(), "Talence", 20.0, 500, false);
 		Concert c2 = new Concert("", "Edith Piaf", new Date(), new Date(), "Paris", 25.0, 500, false);
@@ -53,7 +56,8 @@ public class ConcertList extends ListView {
             @Override
             public void onItemClick(AdapterView<?> arg0, View view, int pos,long id) {
                 //Toast.makeText(getBaseContext(), item, Toast.LENGTH_LONG).show();
-                
+    			Intent intent = new Intent(context, ConcertDetailsActivity.class);
+    	    	context.startActivity(intent);
             }
         }); 
 		this.setBackgroundColor(getResources().getColor(R.color.black));
