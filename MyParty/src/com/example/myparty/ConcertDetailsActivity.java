@@ -2,6 +2,7 @@ package com.example.myparty;
 
 import lists.ClientList;
 import lists.ConcertList;
+import lists.StatsList;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,7 +32,7 @@ public class ConcertDetailsActivity extends Activity implements OnClickListener{
 		this.view_flipper.addView(new ClientList(this));
 		this.view_flipper.addView(new ClientList(this));
 		this.view_flipper.addView(new ClientList(this));
-		this.view_flipper.addView(new ClientList(this));
+		this.view_flipper.addView(new StatsList(this));
 		buttonClients.setOnClickListener(this);
 		buttonDetails.setOnClickListener(this);
 		buttonScan.setOnClickListener(this);
