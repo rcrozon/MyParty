@@ -22,6 +22,7 @@
     
     <string name="stats">Stats</string>
     <string name="menu_refresh">Refresh</string>
+    <string name="menu_deconect">Deconnexion</string>
     
     <color name="blue">#1E7FCB</color>
     <color name="trueblue">#0000FF</color>

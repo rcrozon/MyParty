@@ -6,4 +6,10 @@
         android:showAsAction="ifRoom"
         android:title="@string/menu_refresh" />
     
+    <item
+        android:id="@+id/menu_deconect"
+        android:icon="@drawable/ic_action_location_found_green"
+        android:showAsAction="ifRoom"
+        android:title="@string/menu_deconect" />
+    
 </menu>

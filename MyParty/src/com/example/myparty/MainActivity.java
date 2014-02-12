@@ -118,4 +118,18 @@ public class MainActivity extends Activity implements OnClickListener {
         });
 	}
 	
+	
+	/**
+	 * Quit application
+	 * 
+	 */
+	public void onBackPressed(){
+		Intent intent = new Intent();
+		intent.setAction(Intent.ACTION_MAIN);
+		intent.addCategory(Intent.CATEGORY_HOME);
+		this.startActivity(intent);
+		
+        
+    }
+	
 }
