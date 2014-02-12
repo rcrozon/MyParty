@@ -40,8 +40,8 @@ public class StatsList extends ScrollView {
 		adapter = new Adapter(context, charts);
 		//this.setAdapter(adapter);
 		layout.addView(chartPersonsIn);
-		layout.addView(chartTarif);
-		layout.addView(chartTicketSold);
+//		layout.addView(chartTarif);
+//		layout.addView(chartTicketSold);
 		this.addView(layout);
 	}
 

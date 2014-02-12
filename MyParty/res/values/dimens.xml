@@ -6,6 +6,6 @@
     <dimen name="titleDimension">28px</dimen>
     <dimen name="spacement">10px</dimen>
     <dimen name="topSpacement">80px</dimen>
-    <dimen name="itemDimension">40px</dimen>
+    <dimen name="itemDimension">50px</dimen>
 
 </resources>

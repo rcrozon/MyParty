@@ -3,6 +3,7 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
+	android:background="@color/black"
 	android:orientation="vertical">
 
 	<LinearLayout
@@ -25,6 +26,7 @@
 				android:id="@+id/firstnameTextView"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
+				android:textColor="@color/white"
 				android:layout_marginTop="20dp"
 				android:layout_marginRight="20dp"
 		        android:layout_column="0"
@@ -35,19 +37,19 @@
 			
 			<EditText
 			    android:id="@+id/firstnameTextEdit"
-			    android:layout_width="match_parent"
 			    android:layout_height="wrap_content"
 			    android:layout_column="1"
 			    android:layout_gravity="fill_horizontal"
-			    android:layout_marginRight="140dp"
 			    android:layout_row="0"
 			    android:hint=""
+			    android:textColor="@color/white"
 			    android:textSize="@dimen/itemDimension" />
 			
 			<TextView
 		        android:id="@+id/lastnameTextView"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
+				android:textColor="@color/white"
 		        android:layout_column="0"
 		        android:layout_row="1"
 		        android:text="@string/lastname"
@@ -57,7 +59,7 @@
 		        android:id="@+id/lastnameTextEdit"
 		        android:layout_width="match_parent"
 		        android:layout_height="wrap_content"
-			    android:layout_marginRight="140dp"
+				android:textColor="@color/white"
 		        android:layout_column="1"
 		        android:layout_row="1"
 		        android:hint=""
@@ -67,8 +69,9 @@
 		        android:id="@+id/birthTextView"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
-		           android:layout_column="0"
-		           android:layout_row="2"
+				android:textColor="@color/white"
+	            android:layout_column="0"
+	            android:layout_row="2"
 		        android:layout_marginTop="10dp"
 		        android:text="@string/birth"
 		        android:textSize="@dimen/itemDimension" />
@@ -77,6 +80,7 @@
 			    android:id="@+id/birthTextEdit"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
+				android:textColor="@color/white"
 			    android:layout_column="1"
 			    android:layout_gravity="center"
 		        android:layout_row="2"
@@ -88,6 +92,7 @@
 		        android:id="@+id/emailTextView"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
+				android:textColor="@color/white"
 		        android:layout_column="0"
 		        android:layout_row="3"
 		        android:text="@string/email"
@@ -97,8 +102,9 @@
 			    android:id="@+id/mailTextEdit"
 			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content"
-		           android:layout_column="1"
-		           android:layout_row="3"
+				android:textColor="@color/white"
+		        android:layout_column="1"
+		        android:layout_row="3"
 			    android:ems="10"
 			    android:inputType="textEmailAddress" />
 			
@@ -106,8 +112,9 @@
 		        android:id="@+id/addressTextView"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
-		           android:layout_column="0"
-		           android:layout_row="4"
+				android:textColor="@color/white"
+		        android:layout_column="0"
+		        android:layout_row="4"
 		        android:text="@string/address"
 		        android:textSize="@dimen/itemDimension" />
 			
@@ -115,8 +122,9 @@
 			    android:id="@+id/addressTextEdit"
 			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content"
-		           android:layout_column="1"
-		           android:layout_row="4"
+				android:textColor="@color/white"
+		        android:layout_column="1"
+		        android:layout_row="4"
 			    android:ems="10"
 			    android:inputType="textPostalAddress" />
 			
@@ -124,6 +132,7 @@
 		        android:id="@+id/loginTextView"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
+				android:textColor="@color/white"
 		        android:layout_column="0"
 		        android:layout_row="5"
 		        android:text="@string/login"
@@ -132,6 +141,7 @@
 			<EditText
 		        android:id="@+id/loginTextEdit"
 		        android:layout_width="match_parent"
+				android:textColor="@color/white"
 		        android:layout_column="1"
 		        android:layout_row="5"
 		        android:hint=""
@@ -141,8 +151,9 @@
 		        android:id="@+id/pwd1TextView"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
-		           android:layout_column="0"
-		           android:layout_row="6"
+				android:textColor="@color/white"
+	            android:layout_column="0"
+	            android:layout_row="6"
 		        android:text="@string/password"
 		        android:textSize="@dimen/itemDimension" />
 			
@@ -150,8 +161,9 @@
 			    android:id="@+id/pwd1TextEdit"
 			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content"
-		           android:layout_column="1"
-		           android:layout_row="6"
+				android:textColor="@color/white"
+	            android:layout_column="1"
+		        android:layout_row="6"
 			    android:ems="10"
 			    android:inputType="textPassword" />
 			
@@ -159,15 +171,17 @@
 		        android:id="@+id/pwd2TextView"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
-		           android:layout_column="0"
-		           android:layout_row="7"
-		        android:text="@string/password"
+				android:textColor="@color/white"
+		        android:layout_column="0"
+		        android:layout_row="7"
+		        android:text="@string/retype_password"
 		        android:textSize="@dimen/itemDimension" />
 			
 			<EditText
 			    android:id="@+id/pwd2TextEdit"
 			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content"
+				android:textColor="@color/white"
 				android:layout_column="1"
 				android:layout_row="7"
 			    android:ems="10"

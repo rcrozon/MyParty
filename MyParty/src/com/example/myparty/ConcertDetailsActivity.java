@@ -1,5 +1,8 @@
 package com.example.myparty;
 
+import scan.IntentIntegrator;
+import scan.IntentResult;
+import scan.ScanLayout;
 import lists.ClientList;
 import lists.ConcertList;
 import lists.StatsList;
@@ -13,6 +16,9 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 public class ConcertDetailsActivity extends Activity implements OnClickListener,OnMenuItemClickListener{
@@ -21,7 +27,10 @@ public class ConcertDetailsActivity extends Activity implements OnClickListener,
 	Button buttonDetails ;
 	Button buttonScan ;
 	Button buttonStats ;
+	ImageView imgScan ;
+	RelativeLayout layout_scan;
 	ViewFlipper view_flipper ;
+	TextView text ;
 	private MenuItem decoItem;
 	
 	@Override
@@ -32,10 +41,14 @@ public class ConcertDetailsActivity extends Activity implements OnClickListener,
 		buttonDetails = (Button)findViewById(R.id.buttonDetails);
 		buttonScan = (Button)findViewById(R.id.buttonScan);
 		buttonStats = (Button)findViewById(R.id.buttonStats);
+		text = (TextView)findViewById(R.id.textScan);
+		imgScan = (ImageView)findViewById(R.id.imgScan);
+		layout_scan = (RelativeLayout)findViewById(R.id.layout_scan);
 		view_flipper = (ViewFlipper)findViewById(R.id.view_flipper);
 		this.view_flipper.addView(new ClientList(this));
 		this.view_flipper.addView(new ClientList(this));
 		this.view_flipper.addView(new ClientList(this));
+		//this.view_flipper.addView(layout_scan);
 		this.view_flipper.addView(new StatsList(this));
 		buttonClients.setOnClickListener(this);
 		buttonDetails.setOnClickListener(this);
@@ -71,7 +84,7 @@ public class ConcertDetailsActivity extends Activity implements OnClickListener,
 			nextIndex = 2;
 			buttonScan.setBackgroundResource(R.drawable.button_selected);
 		}else{
-			nextIndex = 3;
+			nextIndex = 3; 
 			buttonStats.setBackgroundResource(R.drawable.button_selected);
 		}
 		if (nextIndex != index){
@@ -86,9 +99,20 @@ public class ConcertDetailsActivity extends Activity implements OnClickListener,
 		}
 	}
 	
+	public void onActivityResult(int requestCode, int resultCode, Intent intent){
+		IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
+		if (scanResult != null){
+			String barcode;
+			String typ;
+			barcode = scanResult.getContents();
+			typ = scanResult.getFormatName();
+			text.setText(barcode + "   " + typ);
+//			this.text.setFreezesText(true);
+			imgScan.setBackgroundResource(R.drawable.qrcode_green);
+		}
+	}
 	@Override
 	public boolean onMenuItemClick(MenuItem item) {
-	
 		Intent intent = new Intent(this, MainActivity.class);
 		this.startActivity(intent);
 		return false;
