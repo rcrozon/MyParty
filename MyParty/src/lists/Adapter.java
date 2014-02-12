@@ -2,7 +2,11 @@ package lists;
 
 import java.util.ArrayList;
 
+import charts.ChartPersonsIn;
+import charts.ChartTarif;
+import charts.ChartTicketsSold;
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -38,7 +42,15 @@ public class Adapter extends BaseAdapter
 	{
 		if (listItems.get(position) instanceof ConcertItem)
 			return (ConcertItem)listItems.get(position);
-		else
+		else if (listItems.get(position) instanceof ClientItem)
 			return (ClientItem)listItems.get(position);
+		else if (listItems.get(position) instanceof ChartPersonsIn)
+			return (ChartPersonsIn)listItems.get(position);
+		else if (listItems.get(position) instanceof ChartTarif)
+			return (ChartTarif)listItems.get(position);
+		else if (listItems.get(position) instanceof ChartTicketsSold)
+			return (ChartTicketsSold)listItems.get(position);
+		else
+			return null;
 	}
 }

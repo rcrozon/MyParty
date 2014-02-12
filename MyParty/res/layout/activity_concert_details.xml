@@ -18,7 +18,7 @@
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
 		        android:background="@drawable/button_selected"
-		        android:text="@string/all_concerts" />
+		        android:text="@string/details" />
             
             <Button
 		        android:id="@+id/buttonClient"
@@ -28,7 +28,7 @@
 		        android:textColor="@color/white"
 		        android:layout_height="wrap_content"
 		        android:background="@drawable/button_unselected"
-		        android:text="@string/next_concerts" />
+		        android:text="@string/client" /> 
             
             <Button
 		        android:id="@+id/buttonScan"
@@ -38,7 +38,7 @@
 		        android:textColor="@color/white"
 		        android:layout_height="wrap_content"
 		        android:background="@drawable/button_unselected"
-		        android:text="@string/news" />
+		        android:text="@string/scan" />
             
             <Button
 		        android:id="@+id/buttonStats"
@@ -48,7 +48,7 @@
 		        android:textColor="@color/white"
 		        android:layout_height="wrap_content"
 		        android:background="@drawable/button_unselected"
-		        android:text="@string/news" />
+		        android:text="@string/stats" />
 
         </TableRow>
 
