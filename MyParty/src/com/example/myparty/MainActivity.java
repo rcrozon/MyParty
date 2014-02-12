@@ -16,6 +16,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	private Button buttonRegister ;
 	private MenuItem item;
 	private UserFunctions userFunctions = new UserFunctions();
+	private boolean running = true;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +28,31 @@ public class MainActivity extends Activity implements OnClickListener {
 		buttonRegister.setOnClickListener(this);
 		lightHandler();
 	}
+
+	@Override
+    public void onPause(){
+        super.onPause();
+        running = false;
+	}
 	
+	@Override
+    public void onResume(){
+        super.onResume();
+        running = true;
+        lightHandler();
+	}
+	
+	@Override
+    public void onStop(){
+        super.onStop();
+        running = false;
+    }
+
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        running = false;
+    }
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -55,7 +80,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	private void lightHandler(){
 		new Thread(new Runnable() {
 	        public void run() {
-            	while(true){
+            	while(running){
             		if (userFunctions.isUserLoggedIn())
             			connectedToServer(0);
             		else
