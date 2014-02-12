@@ -28,7 +28,7 @@
 		        android:textColor="@color/white"
 		        android:layout_height="wrap_content"
 		        android:background="@drawable/button_unselected"
-		        android:text="@string/client" />
+		        android:text="@string/client" /> 
             
             <Button
 		        android:id="@+id/buttonScan"
