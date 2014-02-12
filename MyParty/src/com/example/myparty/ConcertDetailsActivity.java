@@ -3,21 +3,25 @@ package com.example.myparty;
 import lists.ClientList;
 import lists.ConcertList;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ViewFlipper;
 
-public class ConcertDetailsActivity extends Activity implements OnClickListener{
+public class ConcertDetailsActivity extends Activity implements OnClickListener,OnMenuItemClickListener{
 
 	Button buttonClients ;
 	Button buttonDetails ;
 	Button buttonScan ;
 	Button buttonStats ;
 	ViewFlipper view_flipper ;
+	private MenuItem decoItem;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +45,9 @@ public class ConcertDetailsActivity extends Activity implements OnClickListener{
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.main, menu);
+		decoItem = menu.findItem(R.id.menu_deconect);
+		decoItem.setIcon(R.drawable.ic_action_location_found_green);
+		decoItem.setOnMenuItemClickListener(this);
 		return true;
 	}
 
@@ -76,6 +83,14 @@ public class ConcertDetailsActivity extends Activity implements OnClickListener{
 			}
 			view_flipper.setDisplayedChild(nextIndex);	
 		}
+	}
+	
+	@Override
+	public boolean onMenuItemClick(MenuItem item) {
+	
+		Intent intent = new Intent(this, MainActivity.class);
+		this.startActivity(intent);
+		return false;
 	}
 	
 }
