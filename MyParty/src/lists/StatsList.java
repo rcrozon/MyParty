@@ -11,10 +11,10 @@ import charts.ChartPersonsIn;
 import charts.ChartTarif;
 import charts.ChartTicketsSold;
 
-public class StatsList extends ListView {
+public class StatsList extends ScrollView {
 
 	Adapter adapter ;
-	ChartTicketsSold chartTicketSold ;
+	ChartTicketsSold chartTicketSold ; 
 	ChartTarif chartTarif ;
 	ChartPersonsIn chartPersonsIn ;
 	LinearLayout layout ;
@@ -38,7 +38,11 @@ public class StatsList extends ListView {
 		charts.add(chartTicketSold);
 		charts.add(chartTarif);
 		adapter = new Adapter(context, charts);
-		this.setAdapter(adapter);
+		//this.setAdapter(adapter);
+		layout.addView(chartPersonsIn);
+		layout.addView(chartTarif);
+		layout.addView(chartTicketSold);
+		this.addView(layout);
 	}
 
 }
